@@ -57,13 +57,33 @@ public class LoginServlet extends HttpServlet {
         String phone=request.getParameter(Admin.PHONE);
 	    String identity=request.getParameter(Admin.IDENTITY);
         Admin a=new Admin(admin_Id,password);             //登陆
+        Admin res=new Admin(phone,name,password);         //注册
         if(status.equals("1")){
-		    boolean st = AdminDAO.isLoginOK(a);        
+		    boolean st = AdminDAO.isLoginOK(a);         //登陆检查
             if(st){
         	    out.println("OK");
 		    }else{
                 out.println("Wrong");
 		    }
+        }else if(status.equals("2")){             //注册新用户检测手机号并且注册
+        	boolean sts=AdminDAO.ischeckres(phone);
+        	if(sts){
+        		out.println("Wrong");        //提示该手机已注册
+        	}else{
+        		boolean st = AdminDAO.isRegisterOK(res);        
+                if(st){
+            	    out.println("OK");
+    		    }else{
+                    out.println("Wrong");
+    		    }
+        	}
+        }else if(status.equals("3")){         //找回密码验证手机号
+        	boolean sts=AdminDAO.ischeckres(phone);
+        	if(sts){
+        		out.println("OK");        //提示该手机存在
+            }else{
+            	out.println("Wrong");     //该手机未注册
+            }
         }
    
 

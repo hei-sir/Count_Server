@@ -59,5 +59,10 @@ public class Admin {
     	this.password=password;
     	
     }
+    public Admin(String phone,String name,String password){
+    	this.phone=phone;
+    	this.name=name;
+    	this.password=password;
+    }
 
 }
