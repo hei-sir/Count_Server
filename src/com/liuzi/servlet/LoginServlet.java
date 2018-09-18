@@ -58,10 +58,14 @@ public class LoginServlet extends HttpServlet {
 	    String identity=request.getParameter(Admin.IDENTITY);
         Admin a=new Admin(admin_Id,password);             //µÇÂ½
         Admin res=new Admin(phone,name,password);         //×¢²á
+        System.out.println(phone+name+password);
         if(status.equals("1")){
-		    boolean st = AdminDAO.isLoginOK(a);         //µÇÂ½¼ì²é
-            if(st){
-        	    out.println("OK");
+		    boolean st1 = AdminDAO.isLoginOK(a,"1");         //µÇÂ½¼ì²é
+		    boolean st2 = AdminDAO.isLoginOK(a,"2");  
+            if(st1){
+        	    out.println("OK1");
+		    }else if(st2){
+		    	out.println("OK2");
 		    }else{
                 out.println("Wrong");
 		    }
@@ -72,8 +76,10 @@ public class LoginServlet extends HttpServlet {
         	}else{
         		boolean st = AdminDAO.isRegisterOK(res);        
                 if(st){
+                	System.out.print("y");
             	    out.println("OK");
     		    }else{
+    		    	System.out.print("n");
                     out.println("Wrong");
     		    }
         	}

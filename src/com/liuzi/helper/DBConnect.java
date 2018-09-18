@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.liuzi.bean.Admin;
 
@@ -67,7 +69,7 @@ public class DBConnect {
 			
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 			
-			conn =DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/link?" +
+			conn =DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/count?" +
 				                                   "user=root&password=");
 			//3.3 
 			
@@ -105,6 +107,8 @@ public class DBConnect {
 			return true;
 		}
     }
+	
+	
 
 	
 }

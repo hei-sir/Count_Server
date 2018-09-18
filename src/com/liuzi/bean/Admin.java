@@ -18,7 +18,7 @@ public class Admin {
         return admin_Id;
     }
 
-    public void setAdmin_id(String admin_Id) {
+    public void setAdmin_Id(String admin_Id) {
         this.admin_Id = admin_Id;
     }
 
@@ -52,6 +52,9 @@ public class Admin {
 
     public void setIdentity(String identity) {
         this.identity = identity;
+    }
+    public Admin(){
+    	
     }
     
     public Admin(String admin_Id,String password){
